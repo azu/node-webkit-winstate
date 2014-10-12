@@ -1,0 +1,16 @@
+{
+  "name": "node-webkit-winstate",
+  "version": "1.0.0",
+  "homepage": "https://github.com/azu/node-webkit-winstate/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/azu/node-webkit-winstate.git"
+  },
+  "description": "Preserve window state between sessions",
+  "keywords": ["node-webkit"],
+  "main": "index.js",
+  "scripts": {
+  },
+  "author": "azu",
+  "license": "MIT"
+}
