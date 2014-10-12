@@ -13,7 +13,7 @@ npm install node-webkit-winstate
 ## Usage
 
 ```
-<script src="node_modules/node-webkit-winstate/node-webkit-winstate.js"></script>
+<script src="node_modules/node-webkit-winstate/index.js"></script>
 ```
 
 ## Contributing
