@@ -40,7 +40,7 @@ proxyquire('..', {
     Window: {
       get: function() { return win; }
     },
-    App: { manifest: {} }
+    App: { manifest: { window: {} } }
   }
 });
 
@@ -97,5 +97,23 @@ describe('node-webkit-winstate', function() {
     assert(windowState.y, y);
     assert(windowState.width, width);
     assert(windowState.height, height);
+  });
+
+  it('doesnt throw if localStorage disappears on close', function() {
+    var x = 5;
+    var y = 6;
+    var width = 7;
+    var height = 8;
+
+    win.x = x;
+    win.y = y;
+    win.width = width;
+    win.height = height;
+
+    GLOBAL.localStorage = null;
+
+    assert.doesNotThrow(function() {
+      win.emit('close');
+    });
   });
 });
