@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 /**
  * Cross-platform window state preservation.
  * Yes this code is quite complicated, but this is the best I came up with for
@@ -34,11 +34,7 @@ var isMaximizationEvent = false;
 // extra height added in linux x64 gnome-shell env, use it as workaround
 var deltaHeight = (function () {
     // use deltaHeight only in windows with frame enabled
-    if (gui.App.manifest.window && gui.App.manifest.window.frame) {
-        return true;
-    } else {
-        return 'disabled';
-    }
+    if (gui.App.manifest.window.frame) return true; else return 'disabled';
 })();
 
 
@@ -54,9 +50,7 @@ function initWindowState() {
         }
     } else {
         currWinMode = 'normal';
-        if (deltaHeight !== 'disabled') {
-            deltaHeight = 0;
-        }
+        if (deltaHeight !== 'disabled') deltaHeight = 0;
         dumpWindowState();
     }
 
@@ -103,7 +97,7 @@ function restoreWindowState() {
 
 function saveWindowState() {
     dumpWindowState();
-    localStorage['windowState'] = JSON.stringify(winState);
+       localStorage['windowState'] = JSON.stringify(winState);
 }
 
 initWindowState();
@@ -158,6 +152,10 @@ win.window.addEventListener('resize', function () {
 }, false);
 
 win.on('close', function () {
-    saveWindowState();
+    try {
+        saveWindowState();
+    } catch(err) {
+        console.log("winstateError: " + err);
+    }
     this.close(true);
 });
